@@ -4,7 +4,6 @@ import Logo from './_components/Logo'
 import '@/app/_styles/globals.css'
 
 export const metadata = {
-  // title: 'Silly Paradise',
   title: {
     template: '%s / Silly Paradise',
     default: 'Welcome / Silly Paradise',
