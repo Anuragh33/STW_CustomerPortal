@@ -30,6 +30,11 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/cabins/loading.js"
+    ],
+    "/cabins/[cabinid]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/cabins/[cabinid]/page.js"
     ]
   }
 }
