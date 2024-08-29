@@ -1,5 +1,7 @@
 {
   "/page": "app/page.js",
+  "/cabins/page": "app/cabins/page.js",
   "/cabins/[cabinid]/page": "app/cabins/[cabinid]/page.js",
-  "/cabins/page": "app/cabins/page.js"
+  "/about/page": "app/about/page.js",
+  "/icon.png/route": "app/icon.png/route.js"
 }
