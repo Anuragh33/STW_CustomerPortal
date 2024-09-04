@@ -5,5 +5,5 @@ export const metadata = {
 }
 
 export default function AccountPage() {
-  return <div>Welcome</div>
+  return <div>Welcome, Anuragh</div>
 }

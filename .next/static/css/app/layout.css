@@ -590,6 +590,12 @@ video {
 .mt-auto {
   margin-top: auto;
 }
+.mt-3 {
+  margin-top: 0.75rem;
+}
+.mt-10 {
+  margin-top: 2.5rem;
+}
 .inline-block {
   display: inline-block;
 }
@@ -619,6 +625,12 @@ video {
 }
 .h-full {
   height: 100%;
+}
+.h-4 {
+  height: 1rem;
+}
+.min-h-\[400px\] {
+  min-height: 400px;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -668,6 +680,9 @@ video {
   --tw-scale-x: 1.15;
   --tw-scale-y: 1.15;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .grid-cols-5 {
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -802,6 +817,10 @@ video {
 .bg-primary-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(183 199 215 / var(--tw-bg-opacity));
+}
+.bg-primary-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(60 84 108 / var(--tw-bg-opacity));
 }
 .bg-primary-800 {
   --tw-bg-opacity: 1;
@@ -1041,6 +1060,9 @@ video {
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
 .transition-all {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1061,9 +1083,24 @@ video {
   margin: 0 !important;
 }
 
+.rdp-root {
+  --rdp-day-height: 2rem !important; /* The height of the day cells. */
+  --rdp-day-width: 2rem !important; /* The width of the day cells. */
+  --rdp-accent-color: #C69963 !important;
+  --rdp-background-color: #B78343 !important;
+  --rdp-font-family: inherit !important;
+  --rdp-range_middle-background-color: #B78343 !important; /* The color of the background for days in the middle of a range. */
+  margin: 0 !important;
+}
+
 .hover\:bg-accent-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(183 131 67 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-primary-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(60 84 108 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-primary-900:hover {
