@@ -590,6 +590,15 @@ video {
 .mt-auto {
   margin-top: auto;
 }
+.mt-6 {
+  margin-top: 1.5rem;
+}
+.mt-10 {
+  margin-top: 2.5rem;
+}
+.mb-20 {
+  margin-bottom: 5rem;
+}
 .inline-block {
   display: inline-block;
 }
@@ -729,6 +738,9 @@ video {
 .gap-8 {
   gap: 2rem;
 }
+.gap-10 {
+  gap: 2.5rem;
+}
 .gap-x-24 {
   column-gap: 6rem;
 }
@@ -828,6 +840,9 @@ video {
 .object-cover {
   object-fit: cover;
 }
+.object-fill {
+  object-fit: fill;
+}
 .p-1 {
   padding: 0.25rem;
 }
@@ -913,6 +928,12 @@ video {
 }
 .pt-5 {
   padding-top: 1.25rem;
+}
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+.pb-5 {
+  padding-bottom: 1.25rem;
 }
 .text-center {
   text-align: center;
