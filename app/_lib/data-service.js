@@ -134,12 +134,16 @@ export async function getSettings() {
 
   return data
 }
-
+//'https://countriesnow.space/api/v0.1/countries/flag/images'
 export async function getCountries() {
   try {
-    const res = await fetch('https://restcountries.com/v2/all?fields=name,flag')
+    // const res = await fetch('https://restcountries.com/v2/all?fields=name,flag')
+
+    const res = await fetch(
+      'https://countriesnow.space/api/v0.1/countries/flag/images'
+    )
     const countries = await res.json()
-    return countries
+    return countries.data
   } catch {
     throw new Error('Could not fetch countries')
   }
@@ -179,6 +183,8 @@ export async function createBooking(newBooking) {
 // UPDATE
 
 // The updatedFields is an object which should ONLY contain the updated data
+
+/*
 export async function updateGuest(id, updatedFields) {
   const { data, error } = await supabase
     .from('guests')
@@ -221,3 +227,6 @@ export async function deleteBooking(id) {
   }
   return data
 }
+
+
+*/
