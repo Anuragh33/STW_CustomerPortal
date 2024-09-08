@@ -1,5 +1,4 @@
 {
-  "/cabins/page": "app/cabins/page.js",
-  "/cabins/[cabinid]/page": "app/cabins/[cabinid]/page.js",
-  "/account/reservations/edit/[bookingid]/page": "app/account/reservations/edit/[bookingid]/page.js"
+  "/account/reservations/edit/[bookingid]/page": "app/account/reservations/edit/[bookingid]/page.js",
+  "/account/reservations/page": "app/account/reservations/page.js"
 }

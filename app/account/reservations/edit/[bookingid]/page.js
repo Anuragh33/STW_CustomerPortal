@@ -1,21 +1,24 @@
-import updateBooking from '@/app/_lib/actions'
+import { updateBooking } from '@/app/_lib/actions'
 import { getBooking, getCabin } from '@/app/_lib/data-service'
 
 export default async function EditPage({ params }) {
-  const booking = await getBooking(params.bookingid)
+  const { numGuests, observations, cabinId, id } = await getBooking(
+    params.bookingid
+  )
 
-  const { maxCapacity } = await getCabin(booking.cabinId)
+  const { maxCapacity } = await getCabin(cabinId)
 
   return (
     <div>
       <h2 className="font-semibold text-2xl text-accent-400 mb-7">
-        Edit Reservation #{booking.id}
+        Edit Reservation #{id}
       </h2>
-
+      <input type="hidden" name="bookingId" value={id} />
       <form
         action={updateBooking}
         className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
       >
+        <input type="hidden" name="bookingId" value={id} />
         <div className="space-y-2">
           <label htmlFor="numGuests">How many guests?</label>
           <select

@@ -64,13 +64,17 @@ export async function deleteBooking(bookingId) {
 export async function updateBooking(formData) {
   const session = await auth()
 
+  console.log(session)
+
   if (!session) throw new Error('Please log in to continue!!!')
 
   const numGuests = formData.get('numGuests')
 
   const observations = formData.get('observations')
 
-  const updatedFields = { numGuests, observations }
+  const bookingId = formData.get('bookingId')
+
+  const updatedFields = { numGuests, observations, bookingId }
 
   // const { data, error } = await supabase
   //   .from('bookings')
