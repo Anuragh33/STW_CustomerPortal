@@ -89,3 +89,28 @@ export async function updateBooking(formData) {
 
   redirect('/account/reservations')
 }
+
+export async function createBooking(formData) {
+  console.log(formData)
+
+  const session = await auth()
+
+  if (!session) throw new Error('Please log in to continue!!!')
+
+  const numGuests = formData.get('numGuests')
+  const observations = formData.get('observations')
+
+  const newbooking = []
+
+  // const { data, error } = await supabase
+  //   .from('bookings')
+  //   .insert([newBooking])
+
+  //   .select()
+  //   .single()
+
+  // if (error) {
+  //   console.error(error)
+  //   throw new Error('Booking could not be created')
+  // }
+}
