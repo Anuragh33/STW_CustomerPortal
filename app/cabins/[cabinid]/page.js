@@ -19,7 +19,7 @@ export async function generateStaticParams() {
   const cabins = await getCabins()
 
   const ids = cabins.map((cabin) => ({
-    cabinId: cabin.id,
+    cabinId: String(cabin.id),
   }))
 
   return ids
