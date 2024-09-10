@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export function generateMetadata({ params }) {
+export function generateMetadata() {
   return { title: 'Error: Cabin Not Found' }
 }
 
