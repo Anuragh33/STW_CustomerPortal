@@ -28,8 +28,6 @@ function DateSelector({ settings, bookingsByDate, cabin }) {
   // SETTINGS
   const { minBookingLength, maxBookingLength } = settings
 
-  console.log(bookingsByDate)
-
   const handleSelect = (selectedRange) => {
     if (selectedRange === undefined) return
     setRange(selectedRange)

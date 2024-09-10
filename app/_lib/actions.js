@@ -5,6 +5,7 @@ import { auth, signIn, signOut } from './auth'
 import { supabase } from './supabase'
 import { getBookings } from './data-service'
 import { redirect } from 'next/navigation'
+import { isToday } from 'date-fns'
 
 export async function signInAction() {
   await signIn('google', {
@@ -90,27 +91,32 @@ export async function updateBooking(formData) {
   redirect('/account/reservations')
 }
 
-export async function createBooking(formData) {
-  console.log(formData)
-
+export async function createBooking(bookingData, formData) {
   const session = await auth()
 
   if (!session) throw new Error('Please log in to continue!!!')
 
-  const numGuests = formData.get('numGuests')
-  const observations = formData.get('observations')
+  const hasBreakfast = formData.get('hasBreakfast')
 
-  const newbooking = []
+  const extrasPrice = hasBreakfast === true ? 20 * bookingData.numNights : 0
 
-  // const { data, error } = await supabase
-  //   .from('bookings')
-  //   .insert([newBooking])
+  const newBooking = {
+    ...bookingData,
+    guestId: session.user.id,
+    numGuests: Number(formData.get('numGuests')),
+    observations: formData.get('observations').slice(0, 1000),
+    extrasPrice,
+    totalPrice: bookingData.cabinPrice + extrasPrice,
+    isPaid: false,
+    hasBreakfast,
+    status: 'unconfirmed',
+  }
 
-  //   .select()
-  //   .single()
+  const { error } = await supabase.from('bookings').insert([newBooking])
 
-  // if (error) {
-  //   console.error(error)
-  //   throw new Error('Booking could not be created')
-  // }
+  if (error) throw new Error('Booking could not be created')
+
+  revalidatePath(`/cabins/${bookingData.cabinId}`)
+
+  redirect('/thankyou')
 }

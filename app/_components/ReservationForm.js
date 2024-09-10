@@ -6,12 +6,11 @@ import SubmitButton from './SubmitButton'
 import { createBooking } from '../_lib/actions'
 
 function ReservationForm({ cabin, user }) {
-  // CHANGE
-  const { range } = useReservation()
+  const { range, resetRange } = useReservation()
 
   const { maxCapacity, discount, regularPrice, id } = cabin
 
-  const starteDate = range.from
+  const startDate = range.from
 
   const endDate = range.to
 
@@ -19,7 +18,15 @@ function ReservationForm({ cabin, user }) {
 
   const cabinPrice = numNights * (regularPrice - discount)
 
-  console.log(user)
+  const bookingData = {
+    startDate,
+    endDate,
+    numNights,
+    cabinPrice,
+    cabinId: id,
+  }
+
+  const createBookingWithData = createBooking.bind(null, bookingData)
 
   return (
     <div className="scale-[1.01]">
@@ -38,25 +45,13 @@ function ReservationForm({ cabin, user }) {
         </div>
       </div>
 
-      {/* <p>
-        {range.to || range.from
-          ? `${String(range.from)} to ${String(range.to)}`
-          : null}
-      </p> */}
-
       <form
-        action={createBooking}
+        action={(formData) => {
+          createBookingWithData(formData)
+          resetRange()
+        }}
         className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col"
       >
-        <input hidden name="startDate" value={starteDate} />{' '}
-        <input hidden name="endDate" value={endDate} />
-        <input hidden name="numNights" value={numNights} />{' '}
-        <input hidden name="cabinPrice" value={cabinPrice} />
-        <input hidden name="maxCapacity" value={maxCapacity} />
-        <input hidden name="discount" value={discount} />
-        <input hidden name="regularPrice" value={regularPrice} />
-        <input hidden name="cabinId" value={id} />
-        {/* <input hidden name="" value={} /> */}
         <div className="space-y-2">
           <label htmlFor="numGuests">How many guests?</label>
           <select
@@ -82,16 +77,36 @@ function ReservationForm({ cabin, user }) {
           <textarea
             name="observations"
             id="observations"
-            className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+            className="px-5 py-3 bg-primary-200 w-full shadow-sm rounded-sm text-primary-900 "
             placeholder="Any pets, allergies, special requirements, etc.?"
           />
         </div>
-        <div className="flex justify-end items-center gap-6">
-          <p className="text-primary-300 text-base">Start by selecting dates</p>
+        <div className="space-y-2">
+          <label htmlFor="hasBreakfast">Breakfast for $20 per day?</label>
+          <select
+            className="ml-4 text-primary-800 bg-primary-200"
+            placeholder="Breakfast"
+            name="hasBreakfast"
+            id="hasBreakfast"
+            required
+            defaultValue=""
+          >
+            <option value="">Select for breakfast</option>
+            <option value={true}>Need Breakfast</option>
+            <option value={false}>Breakfast not needed</option>
+          </select>
+        </div>
 
-          <SubmitButton pendingStatusLabel="Reserving...">
-            Reserve Now
-          </SubmitButton>
+        <div className="flex justify-end items-center gap-6">
+          {!startDate && !endDate ? (
+            <p className="text-primary-300 text-base">
+              Start by Selecting Dates
+            </p>
+          ) : (
+            <SubmitButton pendingStatusLabel="Reserving...">
+              Reserve Now
+            </SubmitButton>
+          )}
         </div>
       </form>
     </div>
