@@ -31,9 +31,6 @@ export default function CabinsPage({ searchParams }) {
         <Filter />
       </div>
 
-      {/* <CabinList filter={filter} />
-        <ReservationReminder /> */}
-
       <Suspense fallback={<Spinner />} key={filter}>
         <CabinList filter={filter} />
         <ReservationReminder />

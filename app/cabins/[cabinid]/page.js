@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'
+//export const dynamic = 'force-dynamic'
 
 import Cabin from '@/app/_components/Cabin'
 
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }) {
 export async function generateStaticParams() {
   const cabins = await getCabins()
 
-  const ids = cabins.map((cabin) => ({ cabinId: String(cabin.id) }))
+  const ids = cabins.map((cabin) => ({ cabinid: String(cabin.id) }))
 
   return ids
 }
