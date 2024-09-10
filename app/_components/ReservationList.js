@@ -11,6 +11,7 @@ export default function ReservationList({ bookings }) {
     }
   )
   async function handleDelete(bookingId) {
+    optimisticDelete(bookingId)
     await deleteBooking(bookingId)
   }
 
