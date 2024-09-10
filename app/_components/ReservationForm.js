@@ -82,7 +82,7 @@ function ReservationForm({ cabin, user }) {
           />
         </div>
         <div className="space-y-2">
-          <label htmlFor="hasBreakfast">Breakfast for $20 per day?</label>
+          <label htmlFor="hasBreakfast">Breakfast for $20 a day?</label>
           <select
             className="ml-4 text-primary-800 bg-primary-200"
             placeholder="Breakfast"
